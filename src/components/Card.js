@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Card.module.css';
+import { ReactComponent as Back } from './card_back.svg';
 
 class Card extends React.PureComponent {
   state = { visible: false, cardInHand: false };
@@ -29,26 +30,31 @@ class Card extends React.PureComponent {
   };
 
   render() {
-    const { value, blackjackValue, disabled } = this.props;
+    const { disabled, suit, valueLabel, className, style } = this.props;
     const { visible } = this.state;
     const outerStyles = [
+      className,
       styles.card,
-      ...(disabled || visible ? [styles.front] : []),
+      styles[suit.toLowerCase()],
+      ...(disabled || visible ? [styles.front] : [styles.back]),
     ].join(' ');
 
     return (
       <button
+        style={style}
         className={outerStyles}
         onClick={this.toggle}
         disabled={this.props.disabled}
       >
         {disabled || visible ? (
-          <div className={styles.front}>
-            <div>card: {value}</div>
-            <div>blackjack: {blackjackValue}</div>
+          <div className={styles.frontInner}>
+            <span className={styles.labelTop}>{valueLabel}</span>
+            <span className={styles.labelBottom}>{valueLabel}</span>
           </div>
         ) : (
-          <div className={styles.back}>hidden</div>
+          <div className={styles.backInner}>
+            <Back />
+          </div>
         )}
       </button>
     );

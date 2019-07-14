@@ -94,20 +94,20 @@ export default (state = initialState, action) => {
     case COMPARE_HANDS:
       return {
         ...state,
-        ...updateLeader({ dealer, player })
+        ...updateLeader({ dealer, player }),
       };
 
-      case END_GAME:
-        return {
-          ...state,
-          end: true,
-        }
+    case END_GAME:
+      return {
+        ...state,
+        end: true,
+      };
 
-      case DISABLE_PLAYER:
-        return {
-          ...state,
-          playerStandDisabled: true,
-        }
+    case DISABLE_PLAYER:
+      return {
+        ...state,
+        playerStandDisabled: true,
+      };
 
     default:
       return state;

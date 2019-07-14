@@ -8,6 +8,14 @@ export const VALUES = {
   QUEEN: 'QUEEN',
 };
 
+// card value label constants (for non-numeric)
+export const LABELS = {
+  ACE: 'A',
+  JACK: 'J',
+  KING: 'K',
+  QUEEN: 'Q',
+};
+
 // redux actions
 export const FETCH_DECK_REQUEST = 'FETCH_DECK_REQUEST';
 export const FETCH_DECK_SUCCESS = 'FETCH_DECK_SUCCESS';

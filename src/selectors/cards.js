@@ -67,10 +67,15 @@ export const getCardsLoaded = createSelector(
 
 export const getWinner = createSelector(
   cardsState,
-  cards => cards.end ? cards.leader : null,
+  cards => (cards.end ? cards.leader : null),
 );
 
 export const getIsPlayerStandDisabled = createSelector(
   cardsState,
   cards => cards.playerStandDisabled,
+);
+
+export const getHasEnded = createSelector(
+  cardsState,
+  cards => cards.end,
 );

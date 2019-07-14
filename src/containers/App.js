@@ -17,6 +17,7 @@ import {
   getCardsLoaded,
   getWinner,
   getIsPlayerStandDisabled,
+  getHasEnded,
 } from '../selectors/cards';
 
 const mapStateToProps = state => {
@@ -33,6 +34,7 @@ const mapStateToProps = state => {
     isLoaded: getCardsLoaded(state),
     winner: getWinner(state),
     isPlayerStandDisabled: getIsPlayerStandDisabled(state),
+    hasEnded: getHasEnded(state),
   };
 };
 

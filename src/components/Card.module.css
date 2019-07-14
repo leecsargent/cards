@@ -1,12 +1,58 @@
 .card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 5px;
-  padding: 10px;
-  background: red;
-  color: white;
+  height: 200px;
+  width: 134px;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
 }
 
 .front {
-  background: transparent;
-  color:  black;
+  color: black;
+  background-position: center
+}
+
+.back {
+  max-height: 100%;
+  background: none;
+}
+
+.frontInner {
+  height: 100%;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.backInner {
+  max-height: 100%;
+}
+
+.labelBottom {
+  transform: rotate(180deg)
+}
+
+.front {
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+.front.clubs {
+  background-image: url('card_club.svg');
+}
+
+.front.spades {
+  background-image: url('card_spade.svg');
+}
+
+.front.hearts {
+  background-image: url('card_heart.svg');
+}
+
+.front.diamonds {
+  background-image: url('card_diamond.svg');
 }

@@ -14,7 +14,10 @@ import {
   END_GAME,
   DISABLE_PLAYER,
 } from '../constants';
-import { getShouldCompareOnNext, getIsStandingByPlayer } from '../selectors/cards';
+import {
+  getShouldCompareOnNext,
+  getIsStandingByPlayer,
+} from '../selectors/cards';
 
 const getIsDealerStanding = getIsStandingByPlayer('dealer');
 
@@ -23,8 +26,8 @@ export const deal = () => {
     const {
       cards: {
         deckId,
-        dealer: { stand : dealerStands },
-        player: {  stand: playerStands },
+        dealer: { stand: dealerStands },
+        player: { stand: playerStands },
       },
     } = getState();
 
@@ -42,7 +45,7 @@ export const deal = () => {
         if (playerStands) {
           dispatch({
             type: DISABLE_PLAYER,
-          })
+          });
         }
       })
       .catch(error => {
@@ -112,5 +115,5 @@ export const toggleStand = () => {
         type: END_GAME,
       });
     }
-  }
-}
+  };
+};

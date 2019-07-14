@@ -25,6 +25,7 @@ export default class App extends React.Component {
     isPlayerStanding: PropTypes.bool.isRequired,
     winner: PropTypes.string,
     isPlayerStandDisabled: PropTypes.bool.isRequired,
+    hasEnded: PropTypes.bool.isRequired,
   };
 
   onClickDeal = event => {
@@ -51,7 +52,16 @@ export default class App extends React.Component {
   handleClick = type => event => {
     const { requestDeck, deal } = this.props;
     event.preventDefault();
-    return type === 'start' ? requestDeck() : deal();
+
+    if (type === 'start') {
+      return requestDeck();
+    }
+
+    return deal();
+  };
+
+  reset = event => {
+    event.preventDefault();
   };
 
   toggleStand = () => {
@@ -73,6 +83,7 @@ export default class App extends React.Component {
       isPlayerStanding,
       winner,
       isPlayerStandDisabled,
+      hasEnded,
       ...rest
     } = this.props;
 
@@ -91,6 +102,7 @@ export default class App extends React.Component {
           >
             DEAL
           </button>
+          <p>Dealer stands on 17 and draws to 16.</p>
           <div className={styles.players}>
             <Player
               hand={playerCards.hand}
@@ -120,7 +132,11 @@ export default class App extends React.Component {
             />{' '}
             Stand
           </div>
-        { winner && <p>{winner} wins</p>}
+          {hasEnded && (
+            <div>
+              <p>{winner ? `${winner} wins.` : 'Draw'}</p>
+            </div>
+          )}
         </div>
       </div>
     );
