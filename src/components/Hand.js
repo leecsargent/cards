@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import styles from './Hand.module.scss';
 
-const Hand = ({ hand }) => {
+const Hand = ({ hand, classNames }) => {
   return (
-    <div className={[styles.hand, styles[`fan-${hand.length}`]].join(' ')}>
+    <div
+      className={[
+        styles.hand,
+        styles[`fan-${hand.length}`],
+        ...classNames,
+      ].join(' ')}
+    >
       {hand.map(({ id, ...rest }) => {
         return (
           <Card

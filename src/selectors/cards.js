@@ -79,3 +79,8 @@ export const getHasEnded = createSelector(
   cardsState,
   cards => cards.end,
 );
+
+export const getDeckCount = createSelector(
+  cardsState,
+  cards => cards.deckCount,
+);

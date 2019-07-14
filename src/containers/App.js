@@ -18,6 +18,7 @@ import {
   getWinner,
   getIsPlayerStandDisabled,
   getHasEnded,
+  getDeckCount,
 } from '../selectors/cards';
 
 const mapStateToProps = state => {
@@ -35,6 +36,7 @@ const mapStateToProps = state => {
     winner: getWinner(state),
     isPlayerStandDisabled: getIsPlayerStandDisabled(state),
     hasEnded: getHasEnded(state),
+    deckCount: getDeckCount(state),
   };
 };
 

@@ -37,6 +37,7 @@ const initialState = {
   isWaitingForPLayer: false,
   end: false,
   playerStandDisabled: false,
+  deckCount: 6,
 };
 
 export default (state = initialState, action) => {

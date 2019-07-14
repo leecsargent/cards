@@ -60,10 +60,10 @@ export const deal = () => {
 export const requestDeck = () => {
   return (dispatch, getState) => {
     const {
-      cards: { deckId },
+      cards: { deckId, deckCount },
     } = getState();
     dispatch({ type: FETCH_DECK_REQUEST });
-    fetchCards({ deckId })
+    fetchCards({ deckId, deckCount })
       .then(processResponse)
       .then(data => {
         dispatch({

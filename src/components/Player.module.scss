@@ -4,3 +4,19 @@
   width: 300px;
   align-items: center;
 }
+
+.cards {
+  display: flex;
+}
+
+.dealer-cards {
+  //outline: 1px solid red
+}
+
+.player-cards {
+  flex-direction: row-reverse;
+}
+
+.hand {
+  // outline: 1px solid red;
+}

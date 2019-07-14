@@ -26,6 +26,7 @@ export default class App extends React.Component {
     winner: PropTypes.string,
     isPlayerStandDisabled: PropTypes.bool.isRequired,
     hasEnded: PropTypes.bool.isRequired,
+    deckCount: PropTypes.number.isRequired,
   };
 
   onClickDeal = event => {
@@ -84,6 +85,7 @@ export default class App extends React.Component {
       winner,
       isPlayerStandDisabled,
       hasEnded,
+      deckCount,
       ...rest
     } = this.props;
 
@@ -102,7 +104,9 @@ export default class App extends React.Component {
           >
             DEAL
           </button>
-          <p>Dealer stands on 17 and draws to 16.</p>
+          <p className="description-text">
+            Dealer stands on 17 and draws to 16.
+          </p>
           <div className={styles.players}>
             <Player
               hand={playerCards.hand}
@@ -118,7 +122,7 @@ export default class App extends React.Component {
               {...rest}
             />
           </div>
-          {isLoaded && <Deck remaining={remaining} />}
+          {isLoaded && <Deck remaining={remaining} deckCount={deckCount} />}
 
           <p>{requesting ? 'Loading' : ''}</p>
           {!!playerScore && (
