@@ -3,8 +3,10 @@
   border-radius: 5px;
   padding: 10px;
   background: red;
+  color: whte;
 }
 
 .front {
   background: transparent;
+  color:  black;
 }
