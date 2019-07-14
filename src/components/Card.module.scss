@@ -1,5 +1,4 @@
 .card {
-  /* border: 1px solid black; */
   border-radius: 5px;
   height: 200px;
   width: 134px;
@@ -11,7 +10,8 @@
 
 .front {
   color: black;
-  background-position: center
+  background-position: center;
+  background-color: white;
 }
 
 .back {

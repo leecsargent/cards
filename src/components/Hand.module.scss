@@ -1,0 +1,73 @@
+@mixin fan($count) {
+  @for $i from 1 through $count {
+    button:nth-child(#{$i}) {
+      transform: translate(-50%, -50%) rotate(-50deg / 2 + 50deg / ($count + 1) * $i);
+    }
+  }
+}
+
+.fan-1 {
+  @include fan(1);
+}
+
+.fan-2 {
+  @include fan(2);
+}
+
+.fan-3 {
+  @include fan(3);
+}
+
+.fan-4 {
+  @include fan(4);
+}
+
+.fan-5 {
+  @include fan(5);
+}
+
+.fan-6 {
+  @include fan(6);
+}
+
+.fan-7 {
+  @include fan(7);
+}
+
+.fan-8 {
+  @include fan(8);
+}
+
+.fan-9 {
+  @include fan(9);
+}
+
+.fan-10 {
+  @include fan(10);
+}
+
+.fan-11 {
+  @include fan(11);
+}
+
+.fan-12 {
+  @include fan(12);
+}
+
+.fan-13 {
+  @include fan(13);
+}
+
+.hand {
+  display: flex;
+  height: 200px;
+  width: 134px;
+  position: relative;
+}
+
+.hand .item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center 120%
+}

@@ -1,6 +1,5 @@
 import updateHands from '../helpers/updateHands';
 import updateNext from '../helpers/updateNext';
-import updateWinner from '../helpers/updateWinner';
 import updateLeader from '../helpers/updateLeader';
 
 import {

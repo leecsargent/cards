@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Card.module.css';
+import styles from './Card.module.scss';
 import { ReactComponent as Back } from './card_back.svg';
 
 class Card extends React.PureComponent {
@@ -30,10 +30,10 @@ class Card extends React.PureComponent {
   };
 
   render() {
-    const { disabled, suit, valueLabel, className, style } = this.props;
+    const { disabled, suit, valueLabel, classNames, style } = this.props;
     const { visible } = this.state;
     const outerStyles = [
-      className,
+      ...classNames,
       styles.card,
       styles[suit.toLowerCase()],
       ...(disabled || visible ? [styles.front] : [styles.back]),
@@ -66,11 +66,13 @@ Card.propTypes = {
   addCardToHand: PropTypes.func,
   isDealer: PropTypes.bool,
   disabled: PropTypes.bool,
+  classNames: PropTypes.array,
 };
 
 Card.defaultProps = {
   isDealer: false,
   disabled: false,
+  classNames: [],
 };
 
 export default Card;

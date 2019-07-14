@@ -121,17 +121,19 @@ export default class App extends React.Component {
           {isLoaded && <Deck remaining={remaining} />}
 
           <p>{requesting ? 'Loading' : ''}</p>
-          <div>
-            <input
-              disabled={isWaitingForPlayer || isPlayerStandDisabled}
-              type="checkbox"
-              name="stand"
-              value="stand"
-              checked={isPlayerStanding}
-              onChange={this.toggleStand}
-            />{' '}
-            Stand
-          </div>
+          {!!playerScore && (
+            <div>
+              <input
+                disabled={isWaitingForPlayer || isPlayerStandDisabled}
+                type="checkbox"
+                name="stand"
+                value="stand"
+                checked={isPlayerStanding}
+                onChange={this.toggleStand}
+              />{' '}
+              Stand
+            </div>
+          )}
           {hasEnded && (
             <div>
               <p>{winner ? `${winner} wins.` : 'Draw'}</p>

@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Hand from './Hand';
 import Card from './Card';
+import styles from './Player.module.scss';
 
 class Player extends React.Component {
   addCardToHand = () => {};
   render() {
     const { isDealer, hand, next, addCardToHand, score } = this.props;
     return (
-      <div>
+      <div className={styles.player}>
         <h2>{isDealer ? 'Dealer' : 'Player'}</h2>
         <h3>Score: {score}</h3>
         {hand && !!hand.length && (
