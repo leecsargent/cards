@@ -9,6 +9,7 @@ export default (state, data) => {
   const hand = [...state[player].hand, state[player].next[index]].sort(
     sortCards,
   );
+
   const score = getHandValue(hand);
   const stand = player === 'dealer' && score > 16 ? true : state[player].stand;
   const lost = score > 21;
@@ -16,14 +17,15 @@ export default (state, data) => {
   return {
     ...state,
     [player]: {
+      ...state[player],
       hand,
       next: [
         ...state[player].next.slice(0, index),
         ...state[player].next.slice(index + 1),
       ],
-      stand,
       score,
       lost,
+      stand,
     },
   };
 };

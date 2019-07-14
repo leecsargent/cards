@@ -23,6 +23,8 @@ export default class App extends React.Component {
     playerScore: PropTypes.number.isRequired,
     dealerScore: PropTypes.number.isRequired,
     isPlayerStanding: PropTypes.bool.isRequired,
+    winner: PropTypes.string,
+    isPlayerStandDisabled: PropTypes.bool.isRequired,
   };
 
   onClickDeal = event => {
@@ -55,7 +57,6 @@ export default class App extends React.Component {
   toggleStand = () => {
     const { toggleStand } = this.props;
     toggleStand();
-    console.log('event');
   };
 
   render() {
@@ -70,6 +71,8 @@ export default class App extends React.Component {
       playerScore,
       dealerScore,
       isPlayerStanding,
+      winner,
+      isPlayerStandDisabled,
       ...rest
     } = this.props;
 
@@ -83,7 +86,7 @@ export default class App extends React.Component {
             START
           </button>
           <button
-            disabled={this.disable('deal') || isWaitingForPlayer}
+            disabled={this.disable('deal') || isWaitingForPlayer || !!winner}
             onClick={this.handleClick('deal')}
           >
             DEAL
@@ -108,6 +111,7 @@ export default class App extends React.Component {
           <p>{requesting ? 'Loading' : ''}</p>
           <div>
             <input
+              disabled={isWaitingForPlayer || isPlayerStandDisabled}
               type="checkbox"
               name="stand"
               value="stand"
@@ -116,6 +120,7 @@ export default class App extends React.Component {
             />{' '}
             Stand
           </div>
+        { winner && <p>{winner} wins</p>}
         </div>
       </div>
     );

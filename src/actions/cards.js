@@ -11,18 +11,24 @@ import {
   DEAL_CARDS_ERROR,
   TOGGLE_STAND,
   COMPARE_HANDS,
+  END_GAME,
+  DISABLE_PLAYER,
 } from '../constants';
-import { getShouldCompareOnNext } from '../selectors/cards';
+import { getShouldCompareOnNext, getIsStandingByPlayer } from '../selectors/cards';
+
+const getIsDealerStanding = getIsStandingByPlayer('dealer');
+
 export const deal = () => {
   return (dispatch, getState) => {
     const {
       cards: {
         deckId,
-        dealer: { stand },
+        dealer: { stand : dealerStands },
+        player: {  stand: playerStands },
       },
     } = getState();
 
-    const count = stand ? 1 : 2;
+    const count = dealerStands ? 1 : 2;
 
     dispatch({ type: DEAL_CARDS_REQUEST });
     fetchCards({ deckId, count })
@@ -32,6 +38,12 @@ export const deal = () => {
           type: DEAL_CARDS_SUCCESS,
           data: processData(data),
         });
+        // permanently disable the player stand toggle
+        if (playerStands) {
+          dispatch({
+            type: DISABLE_PLAYER,
+          })
+        }
       })
       .catch(error => {
         dispatch({
@@ -85,6 +97,20 @@ export const addCardToHand = data => {
   };
 };
 
-export const toggleStand = () => ({
-  type: TOGGLE_STAND,
-});
+export const toggleStand = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const isDealerStanding = getIsDealerStanding(state);
+
+    dispatch({
+      type: TOGGLE_STAND,
+    });
+
+    // if player and dealer both stand, wrap it up
+    if (isDealerStanding) {
+      dispatch({
+        type: END_GAME,
+      });
+    }
+  }
+}

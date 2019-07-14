@@ -37,6 +37,7 @@ export const getIsWaitingForPlayer = createSelector(
   cards => !!cards.player.next.length || !!cards.dealer.next.length,
 );
 
+// TODO there is a better way to do this
 export const getShouldCompareOnNext = createSelector(
   getCardsByPlayer('player'),
   getCardsByPlayer('dealer'),
@@ -62,4 +63,14 @@ export const getIsStandingByPlayer = player =>
 export const getCardsLoaded = createSelector(
   cardsState,
   cards => !!cards.isLoaded,
+);
+
+export const getWinner = createSelector(
+  cardsState,
+  cards => cards.end ? cards.leader : null,
+);
+
+export const getIsPlayerStandDisabled = createSelector(
+  cardsState,
+  cards => cards.playerStandDisabled,
 );

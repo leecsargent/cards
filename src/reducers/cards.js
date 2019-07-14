@@ -1,5 +1,8 @@
 import updateHands from '../helpers/updateHands';
 import updateNext from '../helpers/updateNext';
+import updateWinner from '../helpers/updateWinner';
+import updateLeader from '../helpers/updateLeader';
+
 import {
   FETCH_DECK_REQUEST,
   FETCH_DECK_SUCCESS,
@@ -9,6 +12,9 @@ import {
   DEAL_CARDS_ERROR,
   ADD_CARD_TO_HAND,
   TOGGLE_STAND,
+  COMPARE_HANDS,
+  END_GAME,
+  DISABLE_PLAYER,
 } from '../constants';
 
 const initialState = {
@@ -30,6 +36,8 @@ const initialState = {
   winner: null,
   requesting: false,
   isWaitingForPLayer: false,
+  end: false,
+  playerStandDisabled: false,
 };
 
 export default (state = initialState, action) => {
@@ -82,6 +90,24 @@ export default (state = initialState, action) => {
           stand: !player.stand,
         },
       };
+
+    case COMPARE_HANDS:
+      return {
+        ...state,
+        ...updateLeader({ dealer, player })
+      };
+
+      case END_GAME:
+        return {
+          ...state,
+          end: true,
+        }
+
+      case DISABLE_PLAYER:
+        return {
+          ...state,
+          playerStandDisabled: true,
+        }
 
     default:
       return state;
