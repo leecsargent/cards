@@ -5,7 +5,8 @@ const Deck = ({ remaining, deckCount }) => {
   return (
     <div>
       <p className="description-text">
-        {remaining} cards remaining in {deckCount} decks
+        {remaining} cards remaining in {deckCount}{' '}
+        {`${deckCount > 1 ? 'decks' : 'deck'}.`}
       </p>
     </div>
   );

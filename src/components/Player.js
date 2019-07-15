@@ -9,8 +9,10 @@ class Player extends React.Component {
     const { isDealer, hand, next, addCardToHand, score } = this.props;
     return (
       <div className={styles.player}>
-        <h2>{isDealer ? 'Dealer' : 'Player'}</h2>
-        <h3>{score} points</h3>
+        <div className={styles.headers}>
+          <h2 className={styles.h2}>{isDealer ? 'Dealer' : 'Player'}</h2>
+          <h3 className={styles.h3}>{score} points</h3>
+        </div>
         <div
           className={[
             styles.cards,

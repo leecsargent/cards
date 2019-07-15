@@ -1,7 +1,6 @@
 import updateHands from '../helpers/updateHands';
 import updateNext from '../helpers/updateNext';
 import updateLeader from '../helpers/updateLeader';
-import resetGame from '../helpers/resetGame';
 
 import {
   FETCH_DECK_REQUEST,
@@ -39,7 +38,7 @@ const initialState = {
   isWaitingForPLayer: false,
   end: false,
   playerStandDisabled: false,
-  deckCount: 6,
+  deckCount: 1,
 };
 
 export default (state = initialState, action) => {

@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux';
 import cards from './cards';
-import settings from './settings';
-import players from './players';
-
+// this could have more stuff, like `settings`...
 export default combineReducers({
   cards,
-  players,
-  settings,
 });

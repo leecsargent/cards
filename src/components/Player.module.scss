@@ -1,9 +1,56 @@
 .player {
   display: flex;
   flex-direction: column;
-  width: 400px;
   align-items: center;
-  height: 400px;
+
+  @media only screen and (min-width: 768px) {
+    height: 400px;
+    width: 400px;
+  }
+}
+
+.headers {
+  display: flex;
+
+  @media only screen and (min-width: 768px) {
+    margin: inherit;
+    flex-direction: column;
+  }
+}
+
+.h2 {
+  margin: .5rem;
+  font-size: .8rem;
+
+  &::after {
+    content: '|';
+    position: relative;
+    left: 8px;
+    color: rgb(179, 179, 179)
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin: inherit;
+    font-size: inherit;
+
+    &::after {
+      content: none;
+    }
+
+  }
+}
+
+.h3 {
+  margin: .5rem;
+  font-size: .8rem;
+
+
+
+  @media only screen and (min-width: 768px) {
+    margin: inherit;
+    font-size: inherit;
+
+  }
 }
 
 .cards {

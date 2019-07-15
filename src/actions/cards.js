@@ -19,7 +19,6 @@ import {
   getShouldCompareOnNext,
   getIsStandingByPlayer,
 } from '../selectors/cards';
-import { reset } from 'ansi-colors';
 
 const getIsDealerStanding = getIsStandingByPlayer('dealer');
 
