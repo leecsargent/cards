@@ -51,11 +51,15 @@ export default class App extends React.Component {
   };
 
   handleClick = type => event => {
-    const { requestDeck, deal } = this.props;
+    const { requestDeck, deal, toggleStand } = this.props;
     event.preventDefault();
 
     if (type === 'start') {
       return requestDeck();
+    }
+
+    if (type === 'stand') {
+      return toggleStand()
     }
 
     return deal();
@@ -106,6 +110,13 @@ export default class App extends React.Component {
           >
             DEAL
           </button>
+          <button
+            className="button"
+            disabled={isWaitingForPlayer || isPlayerStandDisabled || hasEnded || !isLoaded || !playerScore}
+            onClick={this.handleClick('stand')}
+          >
+            {`${isPlayerStanding ? 'STAY' : 'STAND '}`}
+          </button>
           <p className="description-text">
             Dealer stands on 17 and draws to 16.
           </p>
@@ -125,23 +136,7 @@ export default class App extends React.Component {
             />
           </div>
           {isLoaded && <Deck remaining={remaining} deckCount={deckCount} />}
-
           <p>{requesting ? 'Loading' : ''}</p>
-          {!!playerScore && (
-            <div>
-              <input
-                disabled={isWaitingForPlayer || isPlayerStandDisabled}
-                type="checkbox"
-                name="stand"
-                value="stand"
-                checked={isPlayerStanding}
-                onChange={this.toggleStand}
-              />{' '}
-              <label htmlFor="stand" className="description-text">
-                Stand (then deal)
-              </label>
-            </div>
-          )}
           {hasEnded && (
             <div>
               <p>{winner ? `${winner} wins.` : 'Draw'}</p>

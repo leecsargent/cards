@@ -23,6 +23,8 @@ h4 {
 
 
 .button {
+  box-sizing: border-box;
+  min-width: 100px;
   display: inline-block;
   border: none;
   border-radius: 16px;

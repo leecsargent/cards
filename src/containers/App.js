@@ -19,6 +19,7 @@ import {
   getIsPlayerStandDisabled,
   getHasEnded,
   getDeckCount,
+  getDisableStand,
 } from '../selectors/cards';
 
 const mapStateToProps = state => {
