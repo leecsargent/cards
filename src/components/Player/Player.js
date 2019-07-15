@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hand from './Hand';
-import Card from './Card';
+import Hand from '../Hand';
+import Card from '../Card';
 import styles from './Player.module.scss';
 
 class Player extends React.Component {

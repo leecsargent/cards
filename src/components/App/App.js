@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Player from './Player';
+import Player from '../Player';
 import styles from './App.module.scss';
-import Deck from './Deck';
+import Deck from '../Deck';
 
 export default class App extends React.Component {
   static propTypes = {

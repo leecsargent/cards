@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from './Card';
+import Card from '../Card';
 import styles from './Hand.module.scss';
 
 const Hand = ({ hand, classNames }) => {
