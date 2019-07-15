@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 export default params => {
   const { deckId, count, deckCount } = params;
   const path =

@@ -1,6 +1,6 @@
 import { VALUES } from '../constants';
 
-import { isNumeric } from './isNumeric';
+import isNumeric from './isNumeric';
 
 const nonNumeric = str => (str === VALUES.ACE ? 1 : 10);
 

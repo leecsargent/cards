@@ -138,7 +138,7 @@ export default class App extends React.Component {
                 onChange={this.toggleStand}
               />{' '}
               <label htmlFor="stand" className="description-text">
-                Stand
+                Stand (then deal)
               </label>
             </div>
           )}

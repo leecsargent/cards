@@ -1,1 +1,1 @@
-export const isNumeric = value => !Number.isNaN(parseInt(value, 10));
+export default value => !Number.isNaN(parseInt(value, 10));

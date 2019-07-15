@@ -1,4 +1,4 @@
-import fetchCards from '../helpers/fetch';
+import requestCards from '../helpers/requestCards';
 import processResponse from '../helpers/processReponse';
 import processData from '../helpers/processData';
 import {
@@ -35,7 +35,7 @@ export const deal = () => {
     const count = dealerStands ? 1 : 2;
 
     dispatch({ type: DEAL_CARDS_REQUEST });
-    fetchCards({ deckId, count })
+    requestCards({ deckId, count })
       .then(processResponse)
       .then(data => {
         dispatch({
@@ -65,7 +65,7 @@ export const requestDeck = () => {
       cards: { deckId, deckCount },
     } = getState();
     dispatch({ type: FETCH_DECK_REQUEST });
-    fetchCards({ deckId, deckCount })
+    requestCards({ deckId, deckCount })
       .then(processResponse)
       .then(data => {
         dispatch({
