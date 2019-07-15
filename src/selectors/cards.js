@@ -2,16 +2,6 @@ import { createSelector } from 'reselect';
 
 const cardsState = ({ cards }) => cards;
 
-export const getDealerCards = createSelector(
-  cardsState,
-  cards => cards.dealer,
-);
-
-export const getPlayerCards = createSelector(
-  cardsState,
-  cards => cards.player,
-);
-
 export const getCardsByPlayer = player =>
   createSelector(
     cardsState,
