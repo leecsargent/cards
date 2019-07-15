@@ -31,3 +31,4 @@ export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
 export const TOGGLE_STAND = 'TOGGLE_STAND';
 export const END_GAME = 'END_GAME';
 export const DISABLE_PLAYER = 'DISABLE_PLAYER';
+export const RESET = 'RESET';

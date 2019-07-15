@@ -13,11 +13,13 @@ import {
   COMPARE_HANDS,
   END_GAME,
   DISABLE_PLAYER,
+  RESET,
 } from '../constants';
 import {
   getShouldCompareOnNext,
   getIsStandingByPlayer,
 } from '../selectors/cards';
+import { reset } from 'ansi-colors';
 
 const getIsDealerStanding = getIsStandingByPlayer('dealer');
 
@@ -59,6 +61,7 @@ export const deal = () => {
 
 export const requestDeck = () => {
   return (dispatch, getState) => {
+    dispatch({ type: RESET });
     const {
       cards: { deckId, deckCount },
     } = getState();

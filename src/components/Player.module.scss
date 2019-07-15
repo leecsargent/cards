@@ -1,22 +1,41 @@
 .player {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 400px;
   align-items: center;
+  height: 400px;
 }
 
 .cards {
   display: flex;
 }
 
-.dealer-cards {
-  //outline: 1px solid red
-}
-
 .player-cards {
-  flex-direction: row-reverse;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
 }
 
-.hand {
-  // outline: 1px solid red;
+.next {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+.hand,
+.next {
+  margin: 20px;
+}
+
+.has-hand .next {
+  transform: scale(.7);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

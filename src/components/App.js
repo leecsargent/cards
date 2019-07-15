@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Player from './Player';
-import styles from './App.module.css';
+import styles from './App.module.scss';
 import Deck from './Deck';
 
 export default class App extends React.Component {
@@ -46,8 +46,8 @@ export default class App extends React.Component {
   };
 
   disable = type => {
-    const { isLoaded } = this.props;
-    return type === 'start' ? isLoaded : !isLoaded;
+    const { isLoaded, hasEnded } = this.props;
+    return type === 'start' ? isLoaded && !hasEnded : !isLoaded;
   };
 
   handleClick = type => event => {
@@ -93,13 +93,15 @@ export default class App extends React.Component {
       <div className={styles.app}>
         <div className={styles.inner}>
           <button
+            className="button"
             disabled={this.disable('start')}
             onClick={this.handleClick('start')}
           >
             START
           </button>
           <button
-            disabled={this.disable('deal') || isWaitingForPlayer || !!winner}
+            className="button"
+            disabled={this.disable('deal') || isWaitingForPlayer || hasEnded}
             onClick={this.handleClick('deal')}
           >
             DEAL
@@ -135,7 +137,9 @@ export default class App extends React.Component {
                 checked={isPlayerStanding}
                 onChange={this.toggleStand}
               />{' '}
-              Stand
+              <label htmlFor="stand" className="description-text">
+                Stand
+              </label>
             </div>
           )}
           {hasEnded && (

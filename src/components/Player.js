@@ -15,6 +15,7 @@ class Player extends React.Component {
           className={[
             styles.cards,
             styles[`${isDealer ? 'dealer' : 'player'}-cards`],
+            styles[`${hand && !!hand.length ? 'has-hand' : ''}`],
           ].join(' ')}
         >
           {hand && !!hand.length && (
@@ -32,6 +33,7 @@ class Player extends React.Component {
                 key={card.id}
                 addCardToHand={addCardToHand}
                 isDealer={isDealer}
+                classNames={[styles.next]}
               />
             ))}
         </div>

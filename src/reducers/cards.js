@@ -1,6 +1,7 @@
 import updateHands from '../helpers/updateHands';
 import updateNext from '../helpers/updateNext';
 import updateLeader from '../helpers/updateLeader';
+import resetGame from '../helpers/resetGame';
 
 import {
   FETCH_DECK_REQUEST,
@@ -14,6 +15,7 @@ import {
   COMPARE_HANDS,
   END_GAME,
   DISABLE_PLAYER,
+  RESET,
 } from '../constants';
 
 const initialState = {
@@ -45,7 +47,16 @@ export default (state = initialState, action) => {
   const { data, payload } = action;
 
   switch (action.type) {
+    case RESET:
+      return initialState;
+
     case FETCH_DECK_REQUEST:
+      return {
+        ...state,
+        requesting: true,
+        end: false,
+      };
+
     case DEAL_CARDS_REQUEST:
       return {
         ...state,
