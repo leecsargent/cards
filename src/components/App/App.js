@@ -36,6 +36,10 @@ export default class App extends React.Component {
         label: PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
+    selectedAceOption: PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   onClickDeal = event => {
@@ -106,20 +110,20 @@ export default class App extends React.Component {
       deckCount,
       aceValue,
       aceOptions,
+      selectedAceOption,
       ...rest
     } = this.props;
-
-    console.log(aceValue);
 
     return (
       <div className={styles.app}>
         <div className={styles.inner}>
-          <label htmlFor="aceValue">Ace Value</label>
+          <label htmlFor="aceValue">Ace Value: {`${aceValue === '1' ? '1' : '1 or 11'}`}</label>
           <Select
-            value={{ value: '1', label: '1' }}
+            isDisabled={isLoaded && !hasEnded}
+            value={selectedAceOption}
             name="aceValue"
-            label="fdsafds"
             className={styles.select}
+            classNamePrefix="react-select"
             onChange={this.toggleSetting('aceValue')}
             options={aceOptions}
           />

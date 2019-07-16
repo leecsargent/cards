@@ -42,7 +42,7 @@ const initialState = {
   playerStandDisabled: false,
   deckCount: 1,
   settings: {
-    aceValue: '1',
+    aceValue: '11',
     aceOptions: [{ value: '1', label: '1' }, { value: '11', label: '1 or 11' }],
   },
 };
@@ -57,7 +57,11 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case RESET:
-      return initialState;
+      return {
+        ...initialState,
+        // don't reset settings (TODO: settings should be its own slice of state)
+        settings: state.settings,
+      };
 
     case FETCH_DECK_REQUEST:
       return {

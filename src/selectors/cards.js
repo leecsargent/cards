@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { create } from 'handlebars';
 
 const cardsState = ({ cards }) => cards;
 
@@ -85,3 +84,10 @@ export const getAceOptions = createSelector(
   cardsState,
   cards => cards.settings.aceOptions,
 );
+
+
+export const getSelectedAceOption = createSelector(
+  getAceValue,
+  getAceOptions,
+  (value, options) => options.find(item => item.value === value),
+)

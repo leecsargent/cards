@@ -22,6 +22,7 @@ import {
   getDeckCount,
   getAceValue,
   getAceOptions,
+  getSelectedAceOption,
 } from '../selectors/cards';
 
 const mapStateToProps = state => {
@@ -42,6 +43,7 @@ const mapStateToProps = state => {
     deckCount: getDeckCount(state),
     aceValue: getAceValue(state),
     aceOptions: getAceOptions(state),
+    selectedAceOption: getSelectedAceOption(state),
   };
 };
 

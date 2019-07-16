@@ -53,3 +53,7 @@ h4 {
   background: rgb(37, 37, 37);
   outline: none;
 }
+
+.react-select__value-container {
+  justify-content: center;
+}
