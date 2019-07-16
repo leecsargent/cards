@@ -57,9 +57,9 @@ describe('value of non-aces', () => {
 
 describe('highestAceValue', () => {
   it('returns the highest possible total given a previous total and a number of Aces', () => {
-    expect(highestAceValue(1, 1)).toBe(11);
-    expect(highestAceValue(2, 1)).toBe(21);
-    expect(highestAceValue(3, 1)).toBe(22);
+    expect(highestAceValue(1, 1)).toBe(12);
+    expect(highestAceValue(2, 1)).toBe(13);
+    expect(highestAceValue(3, 1)).toBe(14);
   });
 });
 
@@ -78,10 +78,10 @@ describe('getHighestValue', () => {
         { value: 'ACE' },
         { value: 'ACE' },
       ]),
-    ).toBe(13);
+    ).toBe(14);
     expect(
       getHighestValue([{ value: 'ACE' }, { value: 'ACE' }, { value: 'ACE' }]),
-    ).toBe(21);
+    ).toBe(13);
     expect(getHighestValue([{ blackjackValue: 9, value: '9' }])).toBe(9);
   });
 });

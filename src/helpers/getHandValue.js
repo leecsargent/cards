@@ -13,7 +13,7 @@ export const highestAceValue = (aces, total = 0) => {
   return Array(aces)
     .fill()
     .reduce(acc => {
-      return acc + 10 <= 21 ? acc + 10 : acc + 1;
+      return acc + 11 <= 21 ? acc + 11 : acc + 1;
     }, total);
 };
 
@@ -25,4 +25,4 @@ export const value = cards =>
     return acc + curr.blackjackValue;
   }, 0);
 
-export default value;
+export default getHighestValue;

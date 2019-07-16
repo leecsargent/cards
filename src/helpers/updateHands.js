@@ -1,7 +1,7 @@
 import sortCards from './sortCards';
-import getHandValue from './getHandValue';
+import getHighestAceValue, { value as getSimpleValue } from './getHandValue';
 
-export default (state, data) => {
+export default (state, data, aceValue) => {
   const { index, player } = data;
   if (state[player].stand) {
     return state;
@@ -10,7 +10,8 @@ export default (state, data) => {
     sortCards,
   );
 
-  const score = getHandValue(hand);
+  const score =
+    aceValue === '11' ? getHighestAceValue(hand) : getSimpleValue(hand);
   const stand = player === 'dealer' && score > 16 ? true : state[player].stand;
   const lost = score > 21;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 import Player from '../Player';
 import styles from './App.module.scss';
 import Deck from '../Deck';
@@ -9,6 +10,7 @@ export default class App extends React.Component {
     deal: PropTypes.func.isRequired,
     requestDeck: PropTypes.func.isRequired,
     toggleStand: PropTypes.func.isRequired,
+    toggleSetting: PropTypes.func.isRequired,
     isWaitingForPlayer: PropTypes.bool.isRequired,
     requesting: PropTypes.bool.isRequired,
     remaining: PropTypes.number,
@@ -27,6 +29,13 @@ export default class App extends React.Component {
     isPlayerStandDisabled: PropTypes.bool.isRequired,
     hasEnded: PropTypes.bool.isRequired,
     deckCount: PropTypes.number.isRequired,
+    aceValue: PropTypes.string.isRequired,
+    aceOptions: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+      }).isRequired,
+    ).isRequired,
   };
 
   onClickDeal = event => {
@@ -59,7 +68,7 @@ export default class App extends React.Component {
     }
 
     if (type === 'stand') {
-      return toggleStand()
+      return toggleStand();
     }
 
     return deal();
@@ -72,6 +81,11 @@ export default class App extends React.Component {
   toggleStand = () => {
     const { toggleStand } = this.props;
     toggleStand();
+  };
+
+  toggleSetting = field => data => {
+    const { toggleSetting } = this.props;
+    toggleSetting({ field: field, value: data.value });
   };
 
   render() {
@@ -90,12 +104,25 @@ export default class App extends React.Component {
       isPlayerStandDisabled,
       hasEnded,
       deckCount,
+      aceValue,
+      aceOptions,
       ...rest
     } = this.props;
+
+    console.log(aceValue);
 
     return (
       <div className={styles.app}>
         <div className={styles.inner}>
+          <label htmlFor="aceValue">Ace Value</label>
+          <Select
+            value={{ value: '1', label: '1' }}
+            name="aceValue"
+            label="fdsafds"
+            className={styles.select}
+            onChange={this.toggleSetting('aceValue')}
+            options={aceOptions}
+          />
           <button
             className="button"
             disabled={this.disable('start')}
@@ -112,7 +139,13 @@ export default class App extends React.Component {
           </button>
           <button
             className="button"
-            disabled={isWaitingForPlayer || isPlayerStandDisabled || hasEnded || !isLoaded || !playerScore}
+            disabled={
+              isWaitingForPlayer ||
+              isPlayerStandDisabled ||
+              hasEnded ||
+              !isLoaded ||
+              !playerScore
+            }
             onClick={this.handleClick('stand')}
           >
             {`${isPlayerStanding ? 'STAY' : 'STAND '}`}

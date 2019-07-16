@@ -11,12 +11,14 @@ import {
   DEAL_CARDS_ERROR,
   ADD_CARD_TO_HAND,
   TOGGLE_STAND,
+  TOGGLE_SETTING,
   COMPARE_HANDS,
   END_GAME,
   DISABLE_PLAYER,
   RESET,
 } from '../constants';
 
+// TODO this should be broken up
 const initialState = {
   dealAmount: 2,
   deckId: 'new',
@@ -39,10 +41,18 @@ const initialState = {
   end: false,
   playerStandDisabled: false,
   deckCount: 1,
+  settings: {
+    aceValue: '1',
+    aceOptions: [{ value: '1', label: '1' }, { value: '11', label: '1 or 11' }],
+  },
 };
 
 export default (state = initialState, action) => {
-  const { dealer, player } = state;
+  const {
+    dealer,
+    player,
+    settings: { aceValue },
+  } = state;
   const { data, payload } = action;
 
   switch (action.type) {
@@ -90,7 +100,7 @@ export default (state = initialState, action) => {
     case ADD_CARD_TO_HAND:
       return {
         ...state,
-        ...updateHands({ dealer, player }, payload),
+        ...updateHands({ dealer, player }, payload, aceValue),
       };
     case TOGGLE_STAND:
       return {
@@ -117,6 +127,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         playerStandDisabled: true,
+      };
+
+    case TOGGLE_SETTING:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          [action.params.field]: action.params.value,
+        },
       };
 
     default:

@@ -10,6 +10,7 @@ import {
   DEAL_CARDS_SUCCESS,
   DEAL_CARDS_ERROR,
   TOGGLE_STAND,
+  TOGGLE_SETTING,
   COMPARE_HANDS,
   END_GAME,
   DISABLE_PLAYER,
@@ -119,3 +120,8 @@ export const toggleStand = () => {
     }
   };
 };
+
+export const toggleSetting = params => ({
+  type: TOGGLE_SETTING,
+  params,
+});

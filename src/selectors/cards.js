@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { create } from 'handlebars';
 
 const cardsState = ({ cards }) => cards;
 
@@ -73,4 +74,14 @@ export const getHasEnded = createSelector(
 export const getDeckCount = createSelector(
   cardsState,
   cards => cards.deckCount,
+);
+
+export const getAceValue = createSelector(
+  cardsState,
+  cards => cards.settings.aceValue,
+);
+
+export const getAceOptions = createSelector(
+  cardsState,
+  cards => cards.settings.aceOptions,
 );

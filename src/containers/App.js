@@ -5,6 +5,7 @@ import {
   requestDeck,
   addCardToHand,
   toggleStand,
+  toggleSetting,
 } from '../actions/cards';
 import {
   getIsRequesting,
@@ -19,6 +20,8 @@ import {
   getIsPlayerStandDisabled,
   getHasEnded,
   getDeckCount,
+  getAceValue,
+  getAceOptions,
 } from '../selectors/cards';
 
 const mapStateToProps = state => {
@@ -37,6 +40,8 @@ const mapStateToProps = state => {
     isPlayerStandDisabled: getIsPlayerStandDisabled(state),
     hasEnded: getHasEnded(state),
     deckCount: getDeckCount(state),
+    aceValue: getAceValue(state),
+    aceOptions: getAceOptions(state),
   };
 };
 
@@ -46,6 +51,7 @@ const mapDispatchToProps = dispatch => {
     deal: params => dispatch(deal(params)),
     addCardToHand: params => dispatch(addCardToHand(params)),
     toggleStand: () => dispatch(toggleStand()),
+    toggleSetting: params => dispatch(toggleSetting(params)),
   };
 };
 
